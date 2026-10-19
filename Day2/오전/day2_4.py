@@ -1,0 +1,11 @@
+
+user_score = 85
+
+if user_score >= 80:
+    grade = "Pass"
+else:
+    grade = "Fail"
+
+# 삼항연산자 - 한줄로 표현
+
+grade = "Pass" if user_score >= 80 else "Fail"
