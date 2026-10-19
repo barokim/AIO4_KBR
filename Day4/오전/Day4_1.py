@@ -1,5 +1,7 @@
 '''
-Github - 협업시 많이 이용 - 소스관리 , 사유를 적는다, 특정시점으로 롤백 가능
-소스코드가 복잡해서 오류 복구가 쉽지 않을때 - 가장 문제가 없을때로 올라가서 Githubdp 적은 코멧 메시지로 롤백 가능
-
+충돌사항이 발생했을때
 '''
+
+import random
+numbers = [random.randint(1,100) for i in range(10)]
+numbers[0] =numbers[-1]
