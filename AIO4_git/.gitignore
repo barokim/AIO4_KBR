@@ -1,2 +1,6 @@
 .vscode
-.env
+.envy
+
+# AI Git starter
+# python shtudy for  
+print("안녕")
