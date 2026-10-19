@@ -1,3 +1,2 @@
-'''
-ddddd
-'''
+import random
+print("")
