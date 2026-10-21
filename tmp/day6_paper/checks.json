@@ -1,0 +1,164 @@
+{
+  "username_after_constraint": {
+    "value": "a",
+    "length": 1
+  },
+  "price_zero_accepted": true,
+  "sku_prefix_accepted": "XXSKU-0001",
+  "stock_default": 0,
+  "api": [
+    {
+      "case": "list",
+      "status": 200,
+      "body": [
+        {
+          "title": "Pydantic 학습",
+          "done": false,
+          "id": 1
+        }
+      ]
+    },
+    {
+      "case": "create",
+      "status": 201,
+      "body": {
+        "title": "new",
+        "done": false,
+        "id": 2
+      }
+    },
+    {
+      "case": "strict_bool",
+      "status": 422,
+      "body": {
+        "detail": [
+          {
+            "type": "bool_type",
+            "loc": [
+              "body",
+              "done"
+            ],
+            "msg": "Input should be a valid boolean",
+            "input": "true"
+          }
+        ]
+      }
+    },
+    {
+      "case": "blank",
+      "status": 422,
+      "body": {
+        "detail": [
+          {
+            "type": "string_too_short",
+            "loc": [
+              "body",
+              "title"
+            ],
+            "msg": "String should have at least 1 character",
+            "input": "   ",
+            "ctx": {
+              "min_length": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "extra",
+      "status": 422,
+      "body": {
+        "detail": [
+          {
+            "type": "extra_forbidden",
+            "loc": [
+              "body",
+              "foo"
+            ],
+            "msg": "Extra inputs are not permitted",
+            "input": 1
+          }
+        ]
+      }
+    },
+    {
+      "case": "partial",
+      "status": 200,
+      "body": {
+        "title": "Pydantic 학습",
+        "done": true,
+        "id": 1
+      }
+    },
+    {
+      "case": "null",
+      "status": 422,
+      "body": {
+        "detail": [
+          {
+            "loc": [
+              "title"
+            ],
+            "msg": "Input should be a valid string",
+            "type": "string_type"
+          }
+        ]
+      }
+    },
+    {
+      "case": "empty",
+      "status": 200,
+      "body": {
+        "title": "Pydantic 학습",
+        "done": true,
+        "id": 1
+      }
+    },
+    {
+      "case": "put_default",
+      "status": 200,
+      "body": {
+        "title": "replaced",
+        "done": false,
+        "id": 1
+      }
+    },
+    {
+      "case": "missing",
+      "status": 404,
+      "body": {
+        "detail": "작업을 찾을 수 없습니다"
+      }
+    },
+    {
+      "case": "path_type",
+      "status": 422,
+      "body": {
+        "detail": [
+          {
+            "type": "int_parsing",
+            "loc": [
+              "path",
+              "task_id"
+            ],
+            "msg": "Input should be a valid integer, unable to parse string as an integer",
+            "input": "abc"
+          }
+        ]
+      }
+    },
+    {
+      "case": "delete",
+      "status": 204,
+      "body": null
+    },
+    {
+      "case": "deleted",
+      "status": 404,
+      "body": {
+        "detail": "작업을 찾을 수 없습니다"
+      }
+    }
+  ],
+  "unfinished_post": 501
+}
